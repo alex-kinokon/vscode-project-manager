@@ -21,12 +21,15 @@ export class ProjectNode extends TreeItem {
         public readonly collapsibleState: TreeItemCollapsibleState,
         public readonly icon: string | undefined,
         public readonly preview: ProjectPreview,
-        public readonly command?: Command
+        public readonly command?: Command,
+        public readonly customIcon?: string
     ) {
         super(label, collapsibleState);
 
         if (icon) {
-            this.iconPath = this.getIconPath(icon, preview.path);
+            this.iconPath = customIcon
+                ? new ThemeIcon(customIcon)
+                : this.getIconPath(icon, preview.path);
             this.contextValue = "ProjectNodeKind";
         } else {
             this.contextValue = "ConfigNodeKind";

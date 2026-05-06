@@ -52,6 +52,15 @@ export class ProjectStorage {
         }
     }
 
+    public editIcon(name: string, icon: string): void {
+        for (const element of this.projects) {
+            if (element.name.toLowerCase() === name.toLowerCase()) {
+                element.icon = icon;
+                return;
+            }
+        }
+    }
+
     public toggleEnabled(name: string): boolean | undefined {
         for (const element of this.projects) {
             if (element.name.toLowerCase() === name.toLowerCase()) {
@@ -139,6 +148,7 @@ export class ProjectStorage {
                     tags: [],
                     enabled: true,
                     profile: "",
+                    icon: "",
                     ...item
                 }));
 
@@ -148,7 +158,8 @@ export class ProjectStorage {
                     paths: project.paths,
                     tags: project.tags,
                     enabled: project.enabled,
-                    profile: project.profile
+                    profile: project.profile,
+                    icon: project.icon
                 }));
             }
 
@@ -169,7 +180,8 @@ export class ProjectStorage {
             return {
                 label: item.name,
                 description: item.rootPath,
-                profile: item.profile
+                profile: item.profile,
+                icon: item.icon
             };
         });
         return newItems;
@@ -196,7 +208,9 @@ export class ProjectStorage {
         const newItems = this.projects.filter(item => item.enabled && (item.tags.includes(tag) || (tag === '' && item.tags.length === 0))).map(item => {
             return {
                 label: item.name,
-                description: item.rootPath
+                description: item.rootPath,
+                profile: item.profile,
+                icon: item.icon
             };
         });
         return newItems;
@@ -212,7 +226,8 @@ export class ProjectStorage {
             return {
                 label: item.name,
                 description: item.rootPath,
-                profile: item.profile
+                profile: item.profile,
+                icon: item.icon
             };
         });
         return newItems;

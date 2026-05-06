@@ -17,6 +17,7 @@ interface ProjectInQuickPick {
     label: string;
     description: string;
     profile: string;
+    icon?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -111,7 +112,8 @@ export class StorageProvider implements vscode.TreeDataProvider<ProjectNode | Ta
                             command: "_projectManager.open",
                             title: "",
                             arguments: [ PathUtils.expandHomePath(prj.description), prj.label, prj.profile ],
-                        }));
+                        },
+                        prj.icon));
                 }
 
                 resolve(nodes);
@@ -187,7 +189,8 @@ export class StorageProvider implements vscode.TreeDataProvider<ProjectNode | Ta
                             command: "_projectManager.open",
                             title: "",
                             arguments: [ PathUtils.expandHomePath(prj.description), prj.label, prj.profile ],
-                        }));
+                        },
+                        prj.icon));
                 }
 
                 resolve(nodes);

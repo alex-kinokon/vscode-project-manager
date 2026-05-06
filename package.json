@@ -298,6 +298,10 @@
 				"title": "%projectManager.commands.editTags.title%"
 			},
 			{
+				"command": "_projectManager.editIcon",
+				"title": "%projectManager.commands.editIcon.title%"
+			},
+			{
 				"command": "projectManager.whatsNew",
 				"title": "%projectManager.commands.whatsNew.title%"
 			},
@@ -370,6 +374,10 @@
 				},
 				{
 					"command": "_projectManager.editTags",
+					"when": "false"
+				},
+				{
+					"command": "_projectManager.editIcon",
 					"when": "false"
 				},
 				{
@@ -634,6 +642,11 @@
 				},
 				{
 					"command": "_projectManager.editTags",
+					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"group": "favorites"
+				},
+				{
+					"command": "_projectManager.editIcon",
 					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},

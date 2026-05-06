@@ -166,7 +166,8 @@ suite("ProjectStorage", () => {
         assert.deepStrictEqual(mapped[0], {
             label: "EnabledProject",
             description: "/enabled",
-            profile: ""
+            profile: "",
+            icon: ""
         });
     });
 

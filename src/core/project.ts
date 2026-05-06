@@ -10,6 +10,7 @@ export interface Project {
     tags: string[];   // the tags associated to the project
     enabled: boolean; // the project should be displayed in the project list
     profile: string;  // the profile to assign to the project
+    icon: string;     // optional codicon id used to override the default sidebar icon
 }
 
 export function createProject(name: string, rootPath: string): Project {
@@ -20,7 +21,8 @@ export function createProject(name: string, rootPath: string): Project {
         paths: [],
         tags: [],
         enabled: true,
-        profile: ""
+        profile: "",
+        icon: ""
     };
     return newProject;
 }

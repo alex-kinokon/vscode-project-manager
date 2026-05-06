@@ -26,6 +26,7 @@ import { registerHelpAndFeedbackView } from "./sidebar/helpAndFeedbackView";
 import { registerRevealFileInOS } from "./commands/revealFileInOS";
 import { registerOpenSettings } from "./commands/openSettings";
 import { pickTags } from "./quickpick/tagsPicker";
+import { pickCodicon } from "./quickpick/iconPicker";
 import { ViewFavoritesAs } from "./sidebar/constants";
 import { registerSortBy, updateSortByContext } from "./commands/sortBy";
 import { canSwitchOnActiveWindow, openPickedProject, pickProjects, shouldOpenInNewWindow } from "./quickpick/projectsPicker";
@@ -121,6 +122,7 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("_projectManager.deleteProject", (node) => deleteProject(node));
     vscode.commands.registerCommand("_projectManager.renameProject", (node) => renameProject(node));
     vscode.commands.registerCommand("_projectManager.editTags", (node) => editTags(node));
+    vscode.commands.registerCommand("_projectManager.editIcon", (node) => editIcon(node));
     vscode.commands.registerCommand("projectManager.addToFavorites", (node) => saveProject(node));
     vscode.commands.registerCommand("_projectManager.toggleProjectEnabled", (node) => toggleProjectEnabled(node));
 
@@ -569,6 +571,24 @@ export async function activate(context: vscode.ExtensionContext) {
             projectStorage.save();
             vscode.window.showInformationMessage(l10n.t("Project updated!"));
         }
+    }
+
+    async function editIcon(node: ProjectNode) {
+
+        const project = projectStorage.existsWithRootPath(node.command.arguments[0]);
+        if (!project) {
+            return;
+        }
+
+        const picked = await pickCodicon(project.icon ?? "");
+        if (typeof picked === "undefined") {
+            return;
+        }
+
+        projectStorage.editIcon(project.name, picked);
+        projectStorage.save();
+        providerManager.updateTreeViewStorage();
+        vscode.window.showInformationMessage(l10n.t("Project updated!"));
     }
 
     function toggleProjectEnabled(node: ProjectNode, askForUndo = true) {
