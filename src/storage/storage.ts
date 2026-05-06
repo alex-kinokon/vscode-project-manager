@@ -61,6 +61,15 @@ export class ProjectStorage {
         }
     }
 
+    public editDescription(name: string, description: string): void {
+        for (const element of this.projects) {
+            if (element.name.toLowerCase() === name.toLowerCase()) {
+                element.description = description;
+                return;
+            }
+        }
+    }
+
     public toggleEnabled(name: string): boolean | undefined {
         for (const element of this.projects) {
             if (element.name.toLowerCase() === name.toLowerCase()) {
@@ -149,6 +158,7 @@ export class ProjectStorage {
                     enabled: true,
                     profile: "",
                     icon: "",
+                    description: "",
                     ...item
                 }));
 
@@ -159,7 +169,8 @@ export class ProjectStorage {
                     tags: project.tags,
                     enabled: project.enabled,
                     profile: project.profile,
-                    icon: project.icon
+                    icon: project.icon,
+                    description: project.description
                 }));
             }
 
@@ -181,7 +192,8 @@ export class ProjectStorage {
                 label: item.name,
                 description: item.rootPath,
                 profile: item.profile,
-                icon: item.icon
+                icon: item.icon,
+                info: item.description
             };
         });
         return newItems;
@@ -210,7 +222,8 @@ export class ProjectStorage {
                 label: item.name,
                 description: item.rootPath,
                 profile: item.profile,
-                icon: item.icon
+                icon: item.icon,
+                info: item.description
             };
         });
         return newItems;
@@ -227,7 +240,8 @@ export class ProjectStorage {
                 label: item.name,
                 description: item.rootPath,
                 profile: item.profile,
-                icon: item.icon
+                icon: item.icon,
+                info: item.description
             };
         });
         return newItems;

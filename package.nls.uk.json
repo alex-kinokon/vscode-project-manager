@@ -43,6 +43,7 @@
     "projectManager.commands.renameProject.title": "Перейменувати проєкт",
     "projectManager.commands.editTags.title": "Редагувати теги",
     "projectManager.commands.editIcon.title": "Edit Icon",
+    "projectManager.commands.editDescription.title": "Edit Description",
     "projectManager.commands.viewAsTags#sideBarFavorites.title": "Перегляд за тегами",
     "projectManager.commands.viewAsList#sideBarFavorites.title": "Перегляд списком",
     "projectManager.submenus.viewAndSort#sideBarFavorites.title": "Перегляд і сортування",

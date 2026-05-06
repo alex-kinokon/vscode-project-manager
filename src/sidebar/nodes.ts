@@ -12,6 +12,7 @@ export interface ProjectPreview {
     name: string;
     path: string;
     detail?: string;
+    description?: string;
 }
 
 export class ProjectNode extends TreeItem {
@@ -41,9 +42,10 @@ export class ProjectNode extends TreeItem {
         });
 
         const tooltipIcon = getIconDetailsFromProjectPath(preview.path);
+        const tooltipDescription = preview.description ? `${preview.description}\n\n` : "";
         this.tooltip = new MarkdownString(
-            `${label}\n\n_${preview.path}_\n\n${tooltipIcon.icon} ${tooltipIcon.title}`, true);
-        this.description = preview.detail;
+            `${label}\n\n${tooltipDescription}_${preview.path}_\n\n${tooltipIcon.icon} ${tooltipIcon.title}`, true);
+        this.description = preview.description || preview.detail;
     }
 
     private getIconPath(icon: string, projectPath: string): string | IconPath {

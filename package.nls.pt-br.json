@@ -43,6 +43,7 @@
     "projectManager.commands.renameProject.title": "Renomear Projeto",
     "projectManager.commands.editTags.title": "Editar Etiquetas",
     "projectManager.commands.editIcon.title": "Editar Ícone",
+    "projectManager.commands.editDescription.title": "Editar Descrição",
     "projectManager.commands.viewAsTags#sideBarFavorites.title": "Exibir como Etiquetas",
     "projectManager.commands.viewAsList#sideBarFavorites.title": "Exibir como Lista",
     "projectManager.submenus.viewAndSort#sideBarFavorites.title": "Exibir & Ordenação",

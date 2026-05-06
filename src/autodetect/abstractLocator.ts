@@ -264,7 +264,8 @@ export class CustomProjectLocator {
                     paths: [],
                     enabled: true,
                     profile: "",
-                    icon: ""
+                    icon: "",
+                    description: ""
                 };
             }
         }

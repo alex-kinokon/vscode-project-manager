@@ -302,6 +302,10 @@
 				"title": "%projectManager.commands.editIcon.title%"
 			},
 			{
+				"command": "_projectManager.editDescription",
+				"title": "%projectManager.commands.editDescription.title%"
+			},
+			{
 				"command": "projectManager.whatsNew",
 				"title": "%projectManager.commands.whatsNew.title%"
 			},
@@ -378,6 +382,10 @@
 				},
 				{
 					"command": "_projectManager.editIcon",
+					"when": "false"
+				},
+				{
+					"command": "_projectManager.editDescription",
 					"when": "false"
 				},
 				{
@@ -647,6 +655,11 @@
 				},
 				{
 					"command": "_projectManager.editIcon",
+					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"group": "favorites"
+				},
+				{
+					"command": "_projectManager.editDescription",
 					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},
@@ -1044,6 +1057,12 @@
 				"command": "projectManager.listProjects",
 				"key": "shift+alt+p",
 				"mac": "cmd+alt+p"
+			}
+		],
+		"jsonValidation": [
+			{
+				"fileMatch": "**/globalStorage/alefragnani.project-manager/projects.json",
+				"url": "./schemas/projects.schema.json"
 			}
 		],
 		"walkthroughs": [

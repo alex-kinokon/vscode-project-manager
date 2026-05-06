@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Project Manager projects",
+    "description": "List of favorite projects managed by the Project Manager extension.",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [ "name", "rootPath" ],
+        "additionalProperties": false,
+        "properties": {
+            "name": {
+                "type": "string",
+                "description": "Display name of the project."
+            },
+            "rootPath": {
+                "type": "string",
+                "description": "Root path of the project. May use `~` or `$home` to refer to the user home directory, or a remote URI such as `vscode-remote://...`."
+            },
+            "paths": {
+                "type": "array",
+                "description": "Additional folders that belong to this project (multi-root workspaces).",
+                "items": { "type": "string" },
+                "default": []
+            },
+            "tags": {
+                "type": "array",
+                "description": "Tags used to group and filter the project in the Favorites view.",
+                "items": { "type": "string" },
+                "default": []
+            },
+            "enabled": {
+                "type": "boolean",
+                "description": "Whether the project is shown in the project list.",
+                "default": true
+            },
+            "profile": {
+                "type": "string",
+                "description": "VS Code profile to use when opening this project. Leave empty to use the default profile.",
+                "default": ""
+            },
+            "description": {
+                "type": "string",
+                "description": "Free-text description shown in the sidebar (after the name) and in the tooltip.",
+                "default": ""
+            },
+            "icon": {
+                "type": "string",
+                "description": "Codicon id used to override the default sidebar icon (e.g. `rocket`, `flame`, `database`). See https://microsoft.github.io/vscode-codicons/ for the full list. Leave empty to use the default.",
+                "default": "",
+                "examples": [
+                    "",
+                    "rocket",
+                    "flame",
+                    "star-full",
+                    "heart",
+                    "database",
+                    "cloud",
+                    "tools",
+                    "beaker",
+                    "bug",
+                    "lightbulb",
+                    "package"
+                ]
+            }
+        }
+    }
+}

@@ -167,7 +167,8 @@ suite("ProjectStorage", () => {
             label: "EnabledProject",
             description: "/enabled",
             profile: "",
-            icon: ""
+            icon: "",
+            info: ""
         });
     });
 

@@ -123,6 +123,7 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("_projectManager.renameProject", (node) => renameProject(node));
     vscode.commands.registerCommand("_projectManager.editTags", (node) => editTags(node));
     vscode.commands.registerCommand("_projectManager.editIcon", (node) => editIcon(node));
+    vscode.commands.registerCommand("_projectManager.editDescription", (node) => editDescription(node));
     vscode.commands.registerCommand("projectManager.addToFavorites", (node) => saveProject(node));
     vscode.commands.registerCommand("_projectManager.toggleProjectEnabled", (node) => toggleProjectEnabled(node));
 
@@ -586,6 +587,30 @@ export async function activate(context: vscode.ExtensionContext) {
         }
 
         projectStorage.editIcon(project.name, picked);
+        projectStorage.save();
+        providerManager.updateTreeViewStorage();
+        vscode.window.showInformationMessage(l10n.t("Project updated!"));
+    }
+
+    async function editDescription(node: ProjectNode) {
+
+        const project = projectStorage.existsWithRootPath(node.command.arguments[0]);
+        if (!project) {
+            return;
+        }
+
+        const input = await vscode.window.showInputBox({
+            title: l10n.t("Edit Description"),
+            prompt: l10n.t("Project Description"),
+            placeHolder: l10n.t("Type a description for the project (leave empty to clear)"),
+            value: project.description ?? ""
+        });
+
+        if (typeof input === "undefined") {
+            return;
+        }
+
+        projectStorage.editDescription(project.name, input.trim());
         projectStorage.save();
         providerManager.updateTreeViewStorage();
         vscode.window.showInformationMessage(l10n.t("Project updated!"));

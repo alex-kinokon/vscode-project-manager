@@ -33,6 +33,7 @@
     "projectManager.commands.renameProject.title": "Переименовать проект",
     "projectManager.commands.editTags.title": "Отредактировать тэги",
     "projectManager.commands.editIcon.title": "Edit Icon",
+    "projectManager.commands.editDescription.title": "Edit Description",
     "projectManager.commands.viewAsTags#sideBarFavorites.title": "Просмотреть как теги",
     "projectManager.commands.viewAsList#sideBarFavorites.title": "Просмотреть как список",
     "projectManager.submenus.viewAndSort#sideBarFavorites.title": "Просмотр и сортировка",

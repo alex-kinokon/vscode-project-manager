@@ -127,7 +127,7 @@ export class Providers {
 
         const separatorTitle = disabledProjects && filterByTags.length > 0 ? "/ " : " ";
 
-        this.storageTreeView.title = `Favorites (${this.projectStorage.length() - disabledProjects})`;
+        this.storageTreeView.title = l10n.t("Favorites ({0})", this.projectStorage.length() - disabledProjects);
         this.storageTreeView.description = `${disabledProjectsTitle} ${separatorTitle} ${filterByTagsTitle}`;
     }
 
